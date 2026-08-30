@@ -1,0 +1,57 @@
+- name: Home
+  columns:
+    - size: small
+      widgets:
+        - type: server-stats
+          servers:
+            - type: local
+              name: debian
+              hide-mountpoints-by-default: true
+              mountpoints:
+                "/":
+                  name: Root
+                  hide: false
+                "/mnt/backup":
+                  name: Backup
+                  hide: false
+          
+        - type: calendar
+          first-day-of-week: sunday
+
+    - size: full
+      widgets:
+        - type: monitor
+          cache: 1m
+          title: Services
+          sites:
+            - title: Nextcloud
+              icon: sh:nextcloud
+              url: https://nextcloud.jstnc.dev
+
+            - title: Uptime Kuma
+              icon: sh:uptime-kuma
+              url: https://status.jstnc.dev
+
+            - title: Memos
+              icon: di:memos
+              url: https://memos.jstnc.dev
+
+            - title: Vikunja
+              icon: sh:vikunja
+              url: https://vikunja.jstnc.dev
+
+            - title: Immich
+              icon: sh:immich
+              url: https://photos.jstnc.dev
+
+    - size: small
+      widgets:
+        - type: weather
+          location: Sydney, Australia
+          units: metric
+          hour-format: 12h
+
+        - type: repository
+          cache: 1d
+          repository: justin-chiam/homelab
+          commits-limit: 10

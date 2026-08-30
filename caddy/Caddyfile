@@ -30,3 +30,7 @@ vikunja.jstnc.dev {
 photos.jstnc.dev {
 	reverse_proxy immich-server:2283
 }
+
+glance.jstnc.dev {
+    reverse_proxy glance:8080
+}
