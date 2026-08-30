@@ -1,0 +1,21 @@
+services:
+  vikunja:
+    image: vikunja/vikunja:latest
+    container_name: vikunja
+    restart: unless-stopped
+    environment:
+      VIKUNJA_SERVICE_PUBLICURL: https://vikunja.jstnc.dev/
+      VIKUNJA_SERVICE_SECRET: ${VIKUNJA_SECRET}
+      VIKUNJA_SERVICE_TIMEZONE: Australia/Sydney
+      VIKUNJA_SERVICE_ENABLEREGISTRATION: "false"
+      VIKUNJA_DATABASE_TYPE: sqlite
+      VIKUNJA_DATABASE_PATH: /db/vikunja.db
+    volumes:
+      - /srv/vikunja/files:/app/vikunja/files
+      - /srv/vikunja/db:/db
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
