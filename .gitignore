@@ -1,6 +1,8 @@
 .env
 .env.*
 !.env.example
+env-backup.tar.gz
+env-backup.tar.gz.gpg
 
 restic-env
 *.key
