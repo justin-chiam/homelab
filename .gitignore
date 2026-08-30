@@ -15,6 +15,5 @@ restic-env
 *.sqlite3
 
 data/
-config/
 
 .DS_Store
