@@ -1,7 +1,7 @@
 set shell := ["bash", "-euo", "pipefail", "-c"]
 set dotenv-load := true
 
-services := "caddy nextcloud uptime-kuma memos vikunja immich"
+services := "caddy nextcloud uptime-kuma memos vikunja immich glance"
 
 default:
     @just --list --unsorted
