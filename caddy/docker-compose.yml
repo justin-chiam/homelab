@@ -1,0 +1,26 @@
+name: caddy
+
+services:
+  caddy:
+    build: .
+    container_name: caddy
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${TAILSCALE_IP}:443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - /srv/caddy/data:/data
+      - /srv/caddy/config:/config
+    networks:
+      proxy:
+        aliases:
+          - nextcloud.jstnc.dev
+          - status.jstnc.dev
+          - memos.jstnc.dev
+          - vikunja.jstnc.dev
+          - photos.jstnc.dev
+
+networks:
+  proxy:
+    external: true

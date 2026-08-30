@@ -1,0 +1,32 @@
+{
+	acme_dns cloudflare {env.CF_API_TOKEN}
+}
+
+nextcloud.jstnc.dev {
+	reverse_proxy app:80
+
+	redir /.well-known/carddav /remote.php/dav 301
+	redir /.well-known/caldav /remote.php/dav 301
+
+	request_body {
+		max_size 10GB
+	}
+
+	encode gzip
+}
+
+status.jstnc.dev {
+	reverse_proxy uptime-kuma:3001
+}
+
+memos.jstnc.dev {
+	reverse_proxy memos:5230
+}
+
+vikunja.jstnc.dev {
+	reverse_proxy vikunja:3456
+}
+
+photos.jstnc.dev {
+	reverse_proxy immich-server:2283
+}
