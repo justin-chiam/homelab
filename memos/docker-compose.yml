@@ -1,0 +1,22 @@
+name: memos
+
+services:
+  memos:
+    image: neosmemo/memos:stable
+    container_name: memos
+    restart: unless-stopped
+    volumes:
+      - /srv/memos:/var/opt/memos
+    environment:
+      MEMOS_DRIVER: sqlite
+      MEMOS_INSTANCE_URL: https://memos.jstnc.dev
+      MEMOS_UID: "1000"
+      MEMOS_GID: "1000"
+      TZ: Australia/Sydney
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
+
